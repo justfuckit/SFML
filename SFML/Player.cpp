@@ -5,9 +5,8 @@
 Player::Player()
 :position(0, 0)
 {
-	if (!playerTexture.loadFromFile("statek.png"))
-		exit(-1);
-	playerSprite.setTexture(playerTexture);
+	
+	sprite.setTexture(AssetsManager::getTexture("player"));
 }
 
 
@@ -27,8 +26,8 @@ void Player::draw(RenderWindow &window)
 	for (int i = 0; i < (int)bullets.size(); i++)
 		bullets[i].draw(window);
 
-	playerSprite.setPosition(position);
-	window.draw(playerSprite);
+	sprite.setPosition(position);
+	window.draw(sprite);
 }
 
 
@@ -46,12 +45,11 @@ void Player::setPosition(Vector2f pos)
 
 Vector2f Player::getSize()
 {
-	return Vector2f((float)playerSprite.getTextureRect().width, (float)playerSprite.getTextureRect().height);
+	return Vector2f((float)sprite.getTextureRect().width, (float)sprite.getTextureRect().height);
 }
 
 
 void Player::shoot()
 {
-	bullets.push_back(Bullet((int)position.x + int(playerSprite.getTextureRect().width / 2), (int)position.y));
-	bullets[bullets.size() - 1].load();
+	bullets.push_back(Bullet((int)position.x + int(sprite.getTextureRect().width / 2), (int)position.y));
 }

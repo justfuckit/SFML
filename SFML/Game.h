@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "AssetsManager.h"
 
 using namespace sf;
 

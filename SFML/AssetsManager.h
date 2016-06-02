@@ -8,6 +8,7 @@ public:
 	~AssetsManager();
 	static sf::Texture& getTexture(std::string const&);
 	static sf::Texture& setTexture(std::string const&, std::string const&);
+	void load();
 
 private:
 	static AssetsManager* instance;

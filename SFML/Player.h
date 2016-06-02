@@ -2,6 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include "Bullet.h"
+#include "AssetsManager.h"
+
 
 using namespace sf;
 using namespace std;
@@ -20,8 +22,7 @@ public:
 
 private:
 	Vector2f position;
-	Texture playerTexture;
-	Sprite playerSprite;
+	Sprite sprite;
 	vector <Bullet> bullets;
 };
 

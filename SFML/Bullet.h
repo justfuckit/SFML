@@ -1,4 +1,5 @@
 #pragma once
+#include "AssetsManager.h"
 #include <SFML\Graphics.hpp>
 
 using namespace sf;
@@ -10,12 +11,10 @@ public:
 	~Bullet();
 
 	void draw(RenderWindow &window);
-	void load();
 	bool remove;
 
 private:
-	Texture bulletTexture;
-	Sprite bulletSprite;
+	Sprite sprite;
 	Vector2f position;
 	Clock clock;
 	Time timer; //2ms

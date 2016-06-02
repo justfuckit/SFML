@@ -13,7 +13,7 @@ AssetsManager::~AssetsManager()
 {
 }
 
-sf::Texture& AssetsManager::setTexture(std::string const& filename, std::string const& name)
+sf::Texture& AssetsManager::setTexture(std::string const& name, std::string const& filename)
 {
 	auto& texture_manager = instance->texture;
 	sf::Texture& texture = texture_manager[name];
@@ -26,3 +26,10 @@ sf::Texture& AssetsManager::getTexture(std::string const& name)
 	auto& texture_manager = instance->texture;
 	return texture_manager.at(name);
 }
+
+void AssetsManager::load()
+{
+	setTexture("player", "statek.png");
+	setTexture("bullet", "bullet.png");
+}
+
