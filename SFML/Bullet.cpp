@@ -1,12 +1,11 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet(int x, int y)
-:position(0, 0)
+Bullet::Bullet(int x, int y, unsigned int speed) :
+position(0, 0)
 {
+	speedTimer.set(1000/speed);
 	sprite.setTexture(AssetsManager::getTexture("bullet"));
-	clock.restart();
-	timer = milliseconds(2);
 	position = Vector2f((float)x, (float)y);
 	remove = false;
 }
@@ -19,11 +18,10 @@ Bullet::~Bullet()
 
 void Bullet::draw(RenderWindow &window)
 {
-	if (clock.getElapsedTime() >= timer)
+	if (speedTimer.elapsed())
 	{
 		position.y--;
-		clock.restart();
-		if (position.y <= 0)
+		if (position.y <= -10) //do poprawy
 			remove = true;
 	}
 	sprite.setPosition(position);

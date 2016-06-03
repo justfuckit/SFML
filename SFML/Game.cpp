@@ -4,8 +4,9 @@
 
 Game::Game()
 {
-	window.create(VideoMode(1280, 720), "Game Window");
+	window.create(VideoMode(1920, 1080), "Game Window", Style::Fullscreen);
 	window.setMouseCursorVisible(false);
+
 }
 
 

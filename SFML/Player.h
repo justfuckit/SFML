@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <vector>
+#include <iostream>
 #include "Bullet.h"
 #include "AssetsManager.h"
 
@@ -22,7 +23,12 @@ public:
 
 private:
 	Vector2f position;
+	Vector2f getSpeedLastPosition;
+	IntRect spriteRect;
 	Sprite sprite;
 	vector <Bullet> bullets;
+	int speed;
+	int frame;
+	Timer getSpeedTimer;
 };
 

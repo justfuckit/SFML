@@ -29,7 +29,7 @@ sf::Texture& AssetsManager::getTexture(std::string const& name)
 
 void AssetsManager::load()
 {
-	setTexture("player", "statek.png");
-	setTexture("bullet", "bullet.png");
+	setTexture("player", "graph/redship/150.png");
+	setTexture("bullet", "graph/bullet.png");
 }
 

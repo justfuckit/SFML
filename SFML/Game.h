@@ -17,5 +17,6 @@ private:
 
 	RenderWindow window;
 	Player player;
+
 };
 
