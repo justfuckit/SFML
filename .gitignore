@@ -14,3 +14,6 @@
 *.sdf
 *.sln
 *.suo
+/SFML/graph
+*.name
+/README.md

@@ -8,7 +8,7 @@ using namespace sf;
 class Bullet
 {
 public:
-	Bullet(int x, int y, unsigned int speed = 500); // uwa¿aæ na wartoœæ domnieman¹ w trybie debug
+	Bullet(int x, int y, unsigned int speed);
 	~Bullet();
 
 	void draw(RenderWindow &window);

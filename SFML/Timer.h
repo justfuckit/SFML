@@ -7,10 +7,10 @@ class Timer
 {
 public:
 	Timer();
-	Timer(unsigned int ms);
+	Timer(unsigned int us);
 	~Timer();
 
-	void set(unsigned int ms);
+	void set(unsigned int us);
 	bool elapsed();
 
 private:

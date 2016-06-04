@@ -3,17 +3,11 @@
 
 
 Player::Player():
-position(0, 0)
+position(0, 0),
+getSpeedTimer(100000),
+tsprite("player", 9, 1)
 {
 	frame = 4;
-	Texture &texture = AssetsManager::getTexture("player");
-	sprite.setTexture(texture);
-	spriteRect.height = texture.getSize().y;
-	spriteRect.width = texture.getSize().x / 9;
-	spriteRect.top = 0;
-	spriteRect.left = texture.getSize().x / 9 * frame;
-	getSpeedTimer.set(100);
-	
 }
 
 
@@ -33,8 +27,6 @@ void Player::draw(RenderWindow &window)
 			frame = 8;
 		if (frame < 0)
 			frame = 0;
-		spriteRect.left = spriteRect.width * frame;
-		sprite.setTextureRect(spriteRect);
 	}
 
 	for (int i = 0; i < (int)bullets.size(); i++)
@@ -46,8 +38,8 @@ void Player::draw(RenderWindow &window)
 	for (int i = 0; i < (int)bullets.size(); i++)
 		bullets[i].draw(window);
 
-	sprite.setPosition(position);
-	window.draw(sprite);
+	tsprite.setPosition(position);
+	window.draw(tsprite.get(frame, 0));
 }
 
 
@@ -65,13 +57,13 @@ void Player::setPosition(Vector2f pos)
 
 Vector2f Player::getSize()
 {
-	return Vector2f((float)sprite.getTextureRect().width, (float)sprite.getTextureRect().height);
+	return tsprite.getSize();
 }
 
 
 void Player::shoot()
 {
-	bullets.push_back(Bullet((int)position.x + int(sprite.getTextureRect().width / 2 - 4), (int)position.y + 10));
-	bullets.push_back(Bullet((int)position.x + int(sprite.getTextureRect().width / 2 - 50), (int)position.y + 65));
-	bullets.push_back(Bullet((int)position.x + int(sprite.getTextureRect().width / 2 + 42), (int)position.y + 65));
+	bullets.push_back(Bullet((int)position.x + int(tsprite.getSize().x / 2 - 4), (int)position.y + 10, 500));
+	bullets.push_back(Bullet((int)position.x + int(tsprite.getSize().x / 2 - 50), (int)position.y + 65, 480));
+	bullets.push_back(Bullet((int)position.x + int(tsprite.getSize().x / 2 + 42), (int)position.y + 65, 480));
 }

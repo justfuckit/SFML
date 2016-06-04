@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "Bullet.h"
-#include "AssetsManager.h"
+#include "TexturedSprite.h"
 
 
 using namespace sf;
@@ -23,12 +23,12 @@ public:
 
 private:
 	Vector2f position;
-	Vector2f getSpeedLastPosition;
-	IntRect spriteRect;
-	Sprite sprite;
 	vector <Bullet> bullets;
+
+	TexturedSprite tsprite;
+	Vector2f getSpeedLastPosition;
+	Timer getSpeedTimer;
 	int speed;
 	int frame;
-	Timer getSpeedTimer;
 };
 

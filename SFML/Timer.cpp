@@ -6,9 +6,9 @@ Timer::Timer()
 }
 
 
-Timer::Timer(unsigned int ms)
+Timer::Timer(unsigned int us)
 {
-	time = milliseconds(ms);
+	time = microseconds(us);
 	clock.restart();
 }
 
@@ -31,5 +31,6 @@ bool Timer::elapsed()
 
 void Timer::set(unsigned int ms)
 {
-	time = milliseconds(ms);
+	time = microseconds(ms);
+	clock.restart();
 }

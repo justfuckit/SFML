@@ -4,7 +4,7 @@
 Bullet::Bullet(int x, int y, unsigned int speed) :
 position(0, 0)
 {
-	speedTimer.set(1000/speed);
+	speedTimer.set(1000000/speed);
 	sprite.setTexture(AssetsManager::getTexture("bullet"));
 	position = Vector2f((float)x, (float)y);
 	remove = false;
