@@ -45,17 +45,17 @@ void Player::draw(RenderWindow &window)
 
 void Player::setPosition(int x, int y)
 {
-	setPosition(Vector2f((float)x, (float)y));
+	setPosition(Vector2i(x, y));
 }
 
 
-void Player::setPosition(Vector2f pos)
+void Player::setPosition(Vector2i pos)
 {
 	position = pos;
 }
 
 
-Vector2f Player::getSize()
+Vector2i Player::getSize()
 {
 	return tsprite.getSize();
 }

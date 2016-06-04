@@ -11,8 +11,8 @@ public:
 	~TexturedSprite();
 
 	Sprite get(int column = 0, int row = 0);
-	void setPosition(Vector2f pos);
-	Vector2f getSize();
+	void setPosition(Vector2i pos);
+	Vector2i getSize();
 
 private:
 	IntRect rect;

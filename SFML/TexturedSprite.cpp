@@ -24,13 +24,13 @@ Sprite TexturedSprite::get(int column, int row)
 }
 
 
-void TexturedSprite::setPosition(Vector2f pos)
+void TexturedSprite::setPosition(Vector2i pos)
 {
-	sprite.setPosition(pos);
+	sprite.setPosition(Vector2f(pos));
 }
 
 
-Vector2f TexturedSprite::getSize()
+Vector2i TexturedSprite::getSize()
 {
-	return Vector2f((float)rect.width, (float)rect.height);
+	return Vector2i(rect.width, rect.height);
 }

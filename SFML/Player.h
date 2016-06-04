@@ -17,16 +17,16 @@ public:
 
 	void draw(RenderWindow &window);
 	void setPosition(int x, int y);
-	void setPosition(Vector2f pos);
+	void setPosition(Vector2i pos);
 	void shoot();
-	Vector2f getSize();
+	Vector2i getSize();
 
 private:
-	Vector2f position;
+	Vector2i position;
 	vector <Bullet> bullets;
 
 	TexturedSprite tsprite;
-	Vector2f getSpeedLastPosition;
+	Vector2i getSpeedLastPosition;
 	Timer getSpeedTimer;
 	int speed;
 	int frame;
