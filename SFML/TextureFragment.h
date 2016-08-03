@@ -4,11 +4,11 @@
 using namespace sf;
 using namespace std;
 
-class TexturedSprite
+class TextureFragment
 {
 public:
-	TexturedSprite(string textureName, int columns, int rows);
-	~TexturedSprite();
+	TextureFragment(string textureName, int columns, int rows);
+	~TextureFragment();
 
 	Sprite get(int column = 0, int row = 0);
 	void setPosition(Vector2i pos);

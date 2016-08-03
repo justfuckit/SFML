@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "Bullet.h"
-#include "TexturedSprite.h"
+#include "TextureFragment.h"
 
 
 using namespace sf;
@@ -25,7 +25,7 @@ private:
 	Vector2i position;
 	vector <Bullet> bullets;
 
-	TexturedSprite tsprite;
+	TextureFragment textureFragment;
 	Vector2i getSpeedLastPosition;
 	Timer getSpeedTimer;
 	int speed;

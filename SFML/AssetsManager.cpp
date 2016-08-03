@@ -13,7 +13,7 @@ AssetsManager::~AssetsManager()
 {
 }
 
-sf::Texture& AssetsManager::setTexture(std::string const& name, std::string const& filename)
+sf::Texture& AssetsManager::loadTexture(std::string const& name, std::string const& filename)
 {
 	auto& texture_manager = instance->texture;
 	sf::Texture& texture = texture_manager[name];
@@ -29,7 +29,10 @@ sf::Texture& AssetsManager::getTexture(std::string const& name)
 
 void AssetsManager::load()
 {
-	setTexture("player", "graph/redship/150.png");
-	setTexture("bullet", "graph/bullet.png");
+	loadTexture("player", "graph/redship/125.png");
+	loadTexture("bullet", "graph/bullet.png");
+	loadTexture("bullet2", "graph/bullet2.png");
+
+	//BinaryFile<CRHeader, CRBody> b("config");
 }
 

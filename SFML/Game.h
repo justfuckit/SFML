@@ -15,9 +15,10 @@ private:
 	void events();
 	void drawing();
 
+	//int 
 	RenderWindow window;
 	Player player;
-	//komentarz
+
 
 };
 

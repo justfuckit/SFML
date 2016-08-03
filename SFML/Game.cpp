@@ -58,7 +58,7 @@ void Game::events()
 				x = maxX;
 			if (y > maxY)
 				y = maxY;
-
+			
 			player.setPosition(x, y);
 
 			break;

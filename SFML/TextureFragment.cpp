@@ -1,7 +1,7 @@
-#include "TexturedSprite.h"
+#include "TextureFragment.h"
 
 
-TexturedSprite::TexturedSprite(string textureName, int columns, int rows) :
+TextureFragment::TextureFragment(string textureName, int columns, int rows) :
 texture(AssetsManager::getTexture(textureName))
 {
 	rect.width = texture.getSize().x / columns;
@@ -10,12 +10,12 @@ texture(AssetsManager::getTexture(textureName))
 }
 
 
-TexturedSprite::~TexturedSprite()
+TextureFragment::~TextureFragment()
 {
 }
 
 
-Sprite TexturedSprite::get(int column, int row)
+Sprite TextureFragment::get(int column, int row)
 {
 	rect.left = column * rect.width;
 	rect.top = row * rect.height;
@@ -24,13 +24,13 @@ Sprite TexturedSprite::get(int column, int row)
 }
 
 
-void TexturedSprite::setPosition(Vector2i pos)
+void TextureFragment::setPosition(Vector2i pos)
 {
 	sprite.setPosition(Vector2f(pos));
 }
 
 
-Vector2i TexturedSprite::getSize()
+Vector2i TextureFragment::getSize()
 {
 	return Vector2i(rect.width, rect.height);
 }
