@@ -17,6 +17,7 @@ public:
 	void setHead(typeHead newHead);
 	void setBody(typeBody newBody, int bodyNumber);
 	void addBody(typeBody newBody);
+	void removeBody(int bodyNumber);
 	void save();
 
 private:
@@ -46,6 +47,7 @@ template<class typeHead, class typeBody> BinaryFile<typeHead, typeBody>::BinaryF
 	delete temp;
 
 	//read head
+	file.seekg(0);
 	char* hTemp = new char[sizeof(typeHead)];
 	file.read(hTemp, sizeof(typeHead));
 	head = (typeHead*)hTemp;
@@ -106,6 +108,12 @@ template<class typeHead, class typeBody>void BinaryFile<typeHead, typeBody>::add
 	int size = body.size();
 	body.push_back(new typeBody);
 	*body[size] = newBody;
+}
+
+
+template<class typeHead, class typeBody>void BinaryFile<typeHead, typeBody>::removeBody(int bodyNumber)
+{
+	body.erase(body.begin() + bodyNumber);
 }
 
 
