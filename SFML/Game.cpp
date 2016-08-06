@@ -15,6 +15,7 @@ void Game::mainLoop()
 {
 	while (window.isOpen())
 	{
+		globalVariables.update();
 		events();
 
 		window.clear();
@@ -48,6 +49,8 @@ void Game::events()
 		case Event::MouseButtonPressed:
 			if (event.mouseButton.button == Mouse::Left)
 				player.shoot();
+			else if (event.mouseButton.button == Mouse::Right)
+				cout << globalVariables.getMultiplier() << endl << GlobalVariables::getMultiplier() << "\n---------------\n";
 			break;
 
 		case Event::MouseMoved:

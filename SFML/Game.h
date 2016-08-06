@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "AssetsManager.h"
 #include "GameWindow.h"
+#include "GlobalVariables.h"
 
 using namespace sf;
 
@@ -19,5 +20,6 @@ private:
 	Player player;
 	Sprite s;
 	RenderWindow w;
+	GlobalVariables globalVariables;
 };
 

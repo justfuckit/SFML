@@ -5,7 +5,7 @@
 Player::Player():
 position(0, 0),
 getSpeedTimer(100000),
-textureFragment("player", 9, 1)
+expandedSprite("player", 9, 1)
 {
 	frame = 4;
 }
@@ -38,32 +38,20 @@ void Player::draw(RenderWindow &window)
 	for (int i = 0; i < (int)bullets.size(); i++)
 		bullets[i].draw(window);
 
-	textureFragment.setPosition(position);
-	window.draw(textureFragment.get(frame, 0));
-}
-
-
-void Player::setPosition(int x, int y)
-{
-	setPosition(Vector2i(x, y));
-}
-
-
-void Player::setPosition(Vector2i pos)
-{
-	position = pos;
-}
-
-
-Vector2i Player::getSize()
-{
-	return textureFragment.getSize();
+	expandedSprite.setPosition(position);
+	window.draw(expandedSprite.get(frame, 0));
 }
 
 
 void Player::shoot()
 {
-	bullets.push_back(Bullet((int)position.x + int(textureFragment.getSize().x / 2 - 4), (int)position.y + 10, 500));
-	bullets.push_back(Bullet((int)position.x + int(textureFragment.getSize().x / 2 - 50), (int)position.y + 65, 480));
-	bullets.push_back(Bullet((int)position.x + int(textureFragment.getSize().x / 2 + 42), (int)position.y + 65, 480));
+	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 - 4), (int)position.y + 10, 500));
+	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 - 50), (int)position.y + 65, 480));
+	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 + 42), (int)position.y + 65, 480));
+}
+
+void Player::setPosition(int x, int y)
+{
+	position.x = x;
+	position.y = y;
 }

@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "Bullet.h"
-#include "TextureFragment.h"
+#include "ExpandedSprite.h"
 
 
 using namespace sf;
@@ -16,16 +16,14 @@ public:
 	~Player();
 
 	void draw(RenderWindow &window);
-	void setPosition(int x, int y);
-	void setPosition(Vector2i pos);
 	void shoot();
-	Vector2i getSize();
+	void setPosition(int x, int y);
 
 private:
 	Vector2i position;
 	vector <Bullet> bullets;
 
-	TextureFragment textureFragment;
+	ExpandedSprite expandedSprite;
 	Vector2i getSpeedLastPosition;
 	Timer getSpeedTimer;
 	int speed;
