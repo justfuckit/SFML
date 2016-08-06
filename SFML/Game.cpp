@@ -2,7 +2,8 @@
 
 
 
-Game::Game()
+Game::Game():
+s("background", 1, 1)
 {
 }
 
@@ -56,7 +57,6 @@ void Game::events()
 		case Event::MouseMoved:
 			int x = (int)(event.mouseMove.x * resoultionMultiplier);
 			int y = (int)(event.mouseMove.y * resoultionMultiplier);
-			player.setPosition(x, y);
 			break;
 		}
 	}
@@ -65,8 +65,7 @@ void Game::events()
 void Game::drawing()
 {
 	
-	//s.setTexture(AssetsManager::getTexture("background"));
-	//window.draw(s);
+	window.draw(s.get());
 	
 
 	player.draw(window);

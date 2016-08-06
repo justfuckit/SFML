@@ -18,8 +18,7 @@ private:
 	void drawing();
 
 	Player player;
-	Sprite s;
-	RenderWindow w;
+	ExpandedSprite s;
 	GlobalVariables globalVariables;
 };
 

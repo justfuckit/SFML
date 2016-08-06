@@ -32,5 +32,4 @@ bool Timer::elapsed()
 void Timer::set(unsigned int ms)
 {
 	time = microseconds(ms);
-	clock.restart();
 }

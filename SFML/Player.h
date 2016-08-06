@@ -17,7 +17,8 @@ public:
 
 	void draw(RenderWindow &window);
 	void shoot();
-	void setPosition(int x, int y);
+	void moveLeft();
+	void moveRight();
 
 private:
 	Vector2i position;
@@ -26,6 +27,7 @@ private:
 	ExpandedSprite expandedSprite;
 	Vector2i getSpeedLastPosition;
 	Timer getSpeedTimer;
+	Timer moveTimer;
 	int speed;
 	int frame;
 };

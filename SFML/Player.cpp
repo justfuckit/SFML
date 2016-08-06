@@ -3,11 +3,12 @@
 
 
 Player::Player():
-position(0, 0),
+position(0, 900),
 getSpeedTimer(100000),
 expandedSprite("player", 9, 1)
 {
 	frame = 4;
+	moveTimer.set(1000);
 }
 
 
@@ -18,6 +19,12 @@ Player::~Player()
 
 void Player::draw(RenderWindow &window)
 {
+	if (Keyboard::isKeyPressed(Keyboard::Key::Left))
+		moveLeft();
+
+	if (Keyboard::isKeyPressed(Keyboard::Key::Right))
+		moveRight();
+
 	if (getSpeedTimer.elapsed())
 	{
 		speed = int(getSpeedLastPosition.x - position.x) * -10;
@@ -50,8 +57,16 @@ void Player::shoot()
 	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 + 42), (int)position.y + 65, 480));
 }
 
-void Player::setPosition(int x, int y)
+
+void Player::moveLeft()
 {
-	position.x = x;
-	position.y = y;
+	if (moveTimer.elapsed() && position.x > 0)
+		position.x--;
+}
+
+
+void Player::moveRight()
+{
+	if (moveTimer.elapsed() && position.x < 1919)
+		position.x++;
 }
