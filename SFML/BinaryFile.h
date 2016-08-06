@@ -4,6 +4,7 @@
 #include "BinaryFilesStructs.h"
 
 using namespace std;
+using namespace bfs;
 
 template<class typeHead, class typeBody>class BinaryFile
 {
@@ -123,7 +124,7 @@ template<class typeHead, class typeBody>void BinaryFile<typeHead, typeBody>::sav
 	file.seekp(0);
 	Header *header = (Header*)head;
 	header->number = body.size();
-	file.write((char*)head, sizeof(typeBody));
+	file.write((char*)head, sizeof(typeHead));
 	
 	
 	for (int i = 0; i < (signed)body.size(); i++)

@@ -4,9 +4,6 @@
 
 Game::Game()
 {
-	window.create(VideoMode(1280, 720), "Game Window");
-	window.setMouseCursorVisible(false);
-
 }
 
 
@@ -26,6 +23,8 @@ void Game::mainLoop()
 	}
 }
 
+
+
 void Game::events()
 {
 	Event event;
@@ -40,6 +39,10 @@ void Game::events()
 		case Event::KeyPressed:
 			if (event.key.code == Keyboard::Escape)
 				window.close();
+			else if (event.key.code == Keyboard::F11)
+				changeFullscreen();
+			else if (event.key.code == Keyboard::F10)
+				changeResoultion();
 			break;
 
 		case Event::MouseButtonPressed:
@@ -48,19 +51,9 @@ void Game::events()
 			break;
 
 		case Event::MouseMoved:
-			// ustalenie pozycji gracza
-			int maxX = int(window.getSize().x - player.getSize().x);
-			int maxY = int(window.getSize().y - player.getSize().y);
-			int x = event.mouseMove.x;
-			int y = event.mouseMove.y;
-
-			if (x > maxX)
-				x = maxX;
-			if (y > maxY)
-				y = maxY;
-			
+			int x = (int)(event.mouseMove.x * resoultionMultiplier);
+			int y = (int)(event.mouseMove.y * resoultionMultiplier);
 			player.setPosition(x, y);
-
 			break;
 		}
 	}
@@ -68,5 +61,10 @@ void Game::events()
 
 void Game::drawing()
 {
+	
+	//s.setTexture(AssetsManager::getTexture("background"));
+	//window.draw(s);
+	
+
 	player.draw(window);
 }

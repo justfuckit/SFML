@@ -1,10 +1,11 @@
 #pragma once
 #include "Player.h"
 #include "AssetsManager.h"
+#include "GameWindow.h"
 
 using namespace sf;
 
-class Game
+class Game : GameWindow
 {
 public:
 	Game();
@@ -15,10 +16,8 @@ private:
 	void events();
 	void drawing();
 
-	//int 
-	RenderWindow window;
 	Player player;
-
-
+	Sprite s;
+	RenderWindow w;
 };
 

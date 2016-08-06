@@ -44,16 +44,8 @@ void AssetsManager::load()
 	loadTexture("player", "graph/redship/125.png");
 	loadTexture("bullet", "graph/bullet.png");
 	loadTexture("bullet2", "graph/bullet2.png");
+	loadTexture("background", "graph/background.png");
 
-	loadFile<CRHeader, CRBody>("config", "config");
-	BinaryFile<CRHeader, CRBody>* cfg = (BinaryFile<CRHeader, CRBody>*)getFile("config");
-	CRHeader h = cfg->getHead();
-	cout << h.number << endl;
-	for (int i = 0; i < cfg->getBodySize(); i++)
-	{
-		CRBody b = cfg->getBody(i);
-		cout << b.number1 << "\t" << b.number2 << "\t" << b.number3 << "\t" << b.number4 << endl;
-	}
-	
+	loadFile<bfs::ConfigHead, bfs::EmptyBody>("config", "config");	
 }
 
