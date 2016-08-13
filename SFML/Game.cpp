@@ -2,8 +2,8 @@
 
 
 
-Game::Game():
-s("background", 1, 1)
+Game::Game() :
+s("background", 1, 1) //bg
 {
 }
 
@@ -49,9 +49,7 @@ void Game::events()
 
 		case Event::MouseButtonPressed:
 			if (event.mouseButton.button == Mouse::Left)
-				player.shoot();
-			else if (event.mouseButton.button == Mouse::Right)
-				cout << globalVariables.getMultiplier() << endl << GlobalVariables::getMultiplier() << "\n---------------\n";
+				//any action
 			break;
 
 		case Event::MouseMoved:
@@ -65,8 +63,7 @@ void Game::events()
 void Game::drawing()
 {
 	
-	window.draw(s.get());
-	
+	window.draw(s.get());//bg
 
 	player.draw(window);
 }

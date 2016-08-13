@@ -2,13 +2,14 @@
 
 
 
-Player::Player():
+Player::Player() :
+moveTimer(2000),
+playerFrameTimer(80000),
 position(0, 900),
-getSpeedTimer(100000),
-expandedSprite("player", 9, 1)
+shipSprite("player", 9, 1)
 {
-	frame = 4;
-	moveTimer.set(1000);
+	shootPressed = false;
+	playerFrame = 0;
 }
 
 
@@ -19,23 +20,20 @@ Player::~Player()
 
 void Player::draw(RenderWindow &window)
 {
+	turnLeft = false;
+	turnRight = false;
+
+	// Input Control
 	if (Keyboard::isKeyPressed(Keyboard::Key::Left))
 		moveLeft();
-
 	if (Keyboard::isKeyPressed(Keyboard::Key::Right))
 		moveRight();
+	if (Keyboard::isKeyPressed(Keyboard::Key::Space))
+		shoot();
+	if (!Keyboard::isKeyPressed(Keyboard::Key::Space))
+		shootPressed = false;
 
-	if (getSpeedTimer.elapsed())
-	{
-		speed = int(getSpeedLastPosition.x - position.x) * -10;
-		getSpeedLastPosition = position;
-		frame = (speed / 100) + 4;
-		if (frame > 8)
-			frame = 8;
-		if (frame < 0)
-			frame = 0;
-	}
-
+	// Bullets
 	for (int i = 0; i < (int)bullets.size(); i++)
 	{
 		if (bullets[i].remove)
@@ -45,21 +43,39 @@ void Player::draw(RenderWindow &window)
 	for (int i = 0; i < (int)bullets.size(); i++)
 		bullets[i].draw(window);
 
-	expandedSprite.setPosition(position);
-	window.draw(expandedSprite.get(frame, 0));
+	// Move Animations
+	if (!(turnLeft || turnRight) && playerFrameTimer.elapsed())
+	{
+		if (playerFrame > 0)
+			playerFrame--;
+
+		if (playerFrame < 0)
+			playerFrame++;
+	}
+	shipSprite.setPosition(position);
+	window.draw(shipSprite.get(playerFrame + 4, 0));
+
+
 }
 
 
 void Player::shoot()
 {
-	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 - 4), (int)position.y + 10, 500));
-	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 - 50), (int)position.y + 65, 480));
-	bullets.push_back(Bullet((int)position.x + int(expandedSprite.getSize().x / 2 + 42), (int)position.y + 65, 480));
+	if (!shootPressed)
+	{
+		bullets.push_back(Bullet((int)position.x + int(shipSprite.getSize().x / 2 - 4), (int)position.y + 10, 500));
+		bullets.push_back(Bullet((int)position.x + int(shipSprite.getSize().x / 2 - 50), (int)position.y + 65, 480));
+		bullets.push_back(Bullet((int)position.x + int(shipSprite.getSize().x / 2 + 42), (int)position.y + 65, 480));
+		shootPressed = true;
+	}
 }
 
 
 void Player::moveLeft()
 {
+	if (playerFrameTimer.elapsed() && playerFrame > -4)
+		playerFrame--;
+	turnLeft = true;
 	if (moveTimer.elapsed() && position.x > 0)
 		position.x--;
 }
@@ -67,6 +83,9 @@ void Player::moveLeft()
 
 void Player::moveRight()
 {
+	if (playerFrameTimer.elapsed() && playerFrame < 4)
+		playerFrame++;
+	turnRight = true;
 	if (moveTimer.elapsed() && position.x < 1919)
 		position.x++;
 }

@@ -11,6 +11,7 @@ public:
 	~Timer();
 
 	void set(unsigned int us);
+	void restart();
 	bool elapsed();
 
 private:

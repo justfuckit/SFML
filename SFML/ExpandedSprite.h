@@ -8,17 +8,20 @@ using namespace std;
 class ExpandedSprite
 {
 public:
-	ExpandedSprite(string textureName, int columns, int rows);
+	ExpandedSprite(string textureName, int columns = 1, int rows = 1);
 	~ExpandedSprite();
 
 	Sprite get(int column = 0, int row = 0);
 	void setPosition(Vector2i pos);
 	Vector2i getSize();
+	int getColumns();
+	int getRows();
 
 private:
+	int columns, rows;
 	void updateResoultionMultiplier();
 	IntRect rect;
-	Vector2i position;
+	Vector2i unscalledPosition;
 	Sprite sprite;
 	Texture &texture;
 

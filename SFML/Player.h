@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Bullet.h"
 #include "ExpandedSprite.h"
+#include "Animation.h"
 
 
 using namespace sf;
@@ -16,19 +17,22 @@ public:
 	~Player();
 
 	void draw(RenderWindow &window);
+
+
+private:
 	void shoot();
 	void moveLeft();
 	void moveRight();
 
-private:
 	Vector2i position;
 	vector <Bullet> bullets;
+	ExpandedSprite shipSprite;
 
-	ExpandedSprite expandedSprite;
-	Vector2i getSpeedLastPosition;
-	Timer getSpeedTimer;
+	bool turnLeft;
+	bool turnRight;
+	bool shootPressed;
+	int playerFrame; // LEFT -4 ... 4 RIGHT
 	Timer moveTimer;
-	int speed;
-	int frame;
+	Timer playerFrameTimer;
 };
 

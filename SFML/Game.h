@@ -3,6 +3,7 @@
 #include "AssetsManager.h"
 #include "GameWindow.h"
 #include "GlobalVariables.h"
+#include "Animation.h"
 
 using namespace sf;
 
@@ -18,7 +19,7 @@ private:
 	void drawing();
 
 	Player player;
-	ExpandedSprite s;
 	GlobalVariables globalVariables;
+	ExpandedSprite s; //bg
 };
 

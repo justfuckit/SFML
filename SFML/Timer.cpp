@@ -33,3 +33,9 @@ void Timer::set(unsigned int ms)
 {
 	time = microseconds(ms);
 }
+
+
+void Timer::restart()
+{
+	clock.restart();
+}
