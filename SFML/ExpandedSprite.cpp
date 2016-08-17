@@ -16,6 +16,19 @@ ExpandedSprite::~ExpandedSprite()
 {
 }
 
+ExpandedSprite & ExpandedSprite::operator=(const ExpandedSprite & expandedSprite)
+{
+	if (&expandedSprite == this)
+		return *this;
+	
+	columns = expandedSprite.columns;
+	rows = expandedSprite.rows;
+	rect = expandedSprite.rect;
+	unscalledPosition = expandedSprite.unscalledPosition;
+	sprite = expandedSprite.sprite;
+	texture = expandedSprite.texture;
+	return *this;
+}
 
 Sprite ExpandedSprite::get(int column, int row)
 {
@@ -40,6 +53,11 @@ Vector2i ExpandedSprite::getSize()
 {
 	double multiplier = GlobalVariables::getMultiplier();
 	return Vector2i(static_cast<int>(rect.width * multiplier), static_cast<int>(rect.height * multiplier));
+}
+
+Vector2i ExpandedSprite::getUnscalledSize()
+{
+	return Vector2i(rect.width, rect.height);
 }
 
 int ExpandedSprite::getColumns()

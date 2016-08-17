@@ -23,6 +23,7 @@ void GameWindow::openWindow()
 		window.create(VideoMode((int)(1280 * resoultionMultiplier), (int)(720 * resoultionMultiplier)), "Game Window");
 
 	window.setMouseCursorVisible(false);
+	window.setFramerateLimit(60);
 }
 
 void GameWindow::changeFullscreen()

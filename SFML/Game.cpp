@@ -3,8 +3,11 @@
 
 
 Game::Game() :
-s("background", 1, 1) //bg
+s("background", 1, 1), //bg
+fpsTimer(1000000) //fps
 {
+	font.loadFromFile("fonts/4114blaster.ttf");
+	text.setFont(font);
 }
 
 
@@ -66,4 +69,12 @@ void Game::drawing()
 	window.draw(s.get());//bg
 
 	player.draw(window);
+	window.draw(text);
+	fps++;
+	if (fpsTimer.elapsed())
+	{
+		text.setString(to_string(fps));
+		fps = 0;
+	}
+	
 }

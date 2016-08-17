@@ -1,6 +1,7 @@
 #pragma once
 #include "Timer.h"
 #include "AssetsManager.h"
+#include "ExpandedSprite.h"
 #include <SFML\Graphics.hpp>
 
 using namespace sf;
@@ -16,7 +17,7 @@ public:
 
 
 private:
-	Sprite sprite;
-	Vector2f position;
-	Timer speedTimer;
+	ExpandedSprite bulletSprite;
+	Vector2i position;
+	int moveSpeed;
 };

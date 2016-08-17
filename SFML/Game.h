@@ -21,5 +21,9 @@ private:
 	Player player;
 	GlobalVariables globalVariables;
 	ExpandedSprite s; //bg
+	Timer fpsTimer;
+	int fps;
+	Text text;
+	Font font;
 };
 

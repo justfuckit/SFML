@@ -25,14 +25,17 @@ private:
 	void moveRight();
 
 	Vector2i position;
-	vector <Bullet> bullets;
+	vector <Bullet*> bullets;
 	ExpandedSprite shipSprite;
 
 	bool turnLeft;
 	bool turnRight;
 	bool shootPressed;
-	int playerFrame; // LEFT -4 ... 4 RIGHT
-	Timer moveTimer;
-	Timer playerFrameTimer;
+	int shipFrame; // LEFT -4 ... 4 RIGHT
+	int shipAnimationCounter;
+	int shipAnimationSpeed;
+
+	Font font;
+	Text text;
 };
 
