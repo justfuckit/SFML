@@ -4,10 +4,11 @@
 #include "GameWindow.h"
 #include "GlobalVariables.h"
 #include "Animation.h"
+#include "Collisions.h"
 
 using namespace sf;
 
-class Game : GameWindow
+class Game : GameWindow, Collisions
 {
 public:
 	Game();
@@ -17,13 +18,14 @@ public:
 private:
 	void events();
 	void drawing();
+	void collsisons();
 
 	Player player;
 	GlobalVariables globalVariables;
 	ExpandedSprite s; //bg
 	Timer fpsTimer;
 	int fps;
-	Text text;
+	Text fpsText;
 	Font font;
 };
 

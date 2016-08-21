@@ -1,9 +1,8 @@
 #include "Animation.h"
 
 
-Animation::Animation(string textureName, int frames, int row , bool loop, int fps) :
+Animation::Animation(string textureName, int frames , bool loop, int fps) :
 loop(loop),
-row(row),
 timer(static_cast<unsigned int>(1000000/fps)),
 expandedSprite(textureName, frames)
 {
@@ -40,7 +39,7 @@ Sprite Animation::getSprite()
 			}
 		}
 
-		return(expandedSprite.get(frame, row));
+		return(expandedSprite.get(frame));
 	}
 	else
 		return nullSprite;

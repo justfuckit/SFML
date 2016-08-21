@@ -7,6 +7,10 @@ bulletSprite("bullet")
 	Bullet::position = Vector2i(x - (bulletSprite.getUnscalledSize().x / 2), y - (bulletSprite.getUnscalledSize().y / 2));
 	moveSpeed = speed; 
 	remove = false;
+
+	BinaryFile<CRHead, CRBody> *cr = (BinaryFile<CRHead, CRBody>*)AssetsManager::getFile("bullet");
+	for (int i = 0; i < cr->getHead().size; i++)
+		collisionRects.push_back(IntRect(cr->getBody(i).left, cr->getBody(i).top, cr->getBody(i).width, cr->getBody(i).height));
 }
 
 
@@ -24,4 +28,22 @@ void Bullet::draw(RenderWindow &window)
 
 	bulletSprite.setPosition(position);
 	window.draw(bulletSprite.get());
+}
+
+
+bool Bullet::toRemove()
+{ 
+	return remove;
+}
+
+
+vector<IntRect>* Bullet::getCollisionRects()
+{
+	return &collisionRects;
+}
+
+
+Vector2i Bullet::getPosition()
+{
+	return position;
 }

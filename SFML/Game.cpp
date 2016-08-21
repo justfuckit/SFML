@@ -7,7 +7,7 @@ s("background", 1, 1), //bg
 fpsTimer(1000000) //fps
 {
 	font.loadFromFile("fonts/4114blaster.ttf");
-	text.setFont(font);
+	fpsText.setFont(font);
 }
 
 
@@ -19,11 +19,13 @@ void Game::mainLoop()
 {
 	while (window.isOpen())
 	{
+		window.clear();
+
 		globalVariables.update();
 		events();
-
-		window.clear();
 		drawing();
+		collsisons();
+		
 		window.display();
 	}
 }
@@ -48,6 +50,8 @@ void Game::events()
 				changeFullscreen();
 			else if (event.key.code == Keyboard::F10)
 				changeResoultion();
+			else if (event.key.code == Keyboard::F9)
+				changeCollisionRectsDrawing();
 			break;
 
 		case Event::MouseButtonPressed:
@@ -69,12 +73,15 @@ void Game::drawing()
 	window.draw(s.get());//bg
 
 	player.draw(window);
-	window.draw(text);
+	window.draw(fpsText);
 	fps++;
 	if (fpsTimer.elapsed())
 	{
-		text.setString(to_string(fps));
+		fpsText.setString(to_string(fps));
 		fps = 0;
 	}
-	
+}
+
+void Game::collsisons()
+{
 }

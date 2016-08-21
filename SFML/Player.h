@@ -17,6 +17,10 @@ public:
 	~Player();
 
 	void draw(RenderWindow &window);
+	vector <Bullet*>* getBullets();
+	vector<IntRect>* getCollisionRects();
+	Vector2i getPosition();
+	void setPosition(int x, int y);
 
 
 private:
@@ -26,7 +30,9 @@ private:
 
 	Vector2i position;
 	vector <Bullet*> bullets;
+	vector<IntRect> collisionRects;
 	ExpandedSprite shipSprite;
+	Animation fire;
 
 	bool turnLeft;
 	bool turnRight;
@@ -34,8 +40,5 @@ private:
 	int shipFrame; // LEFT -4 ... 4 RIGHT
 	int shipAnimationCounter;
 	int shipAnimationSpeed;
-
-	Font font;
-	Text text;
 };
 

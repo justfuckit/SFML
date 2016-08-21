@@ -42,9 +42,12 @@ void* AssetsManager::getFile(std::string const& name)
 void AssetsManager::load()
 {
 	loadTexture("player", "graph/redship.png");
-	loadTexture("bullet", "graph/bullet.png");
-	loadTexture("background", "graph/background.png");
+	loadTexture("bullet", "graph/bullet4.png");
+	loadTexture("background", "graph/background3.png");
+	loadTexture("fire", "graph/redfire.png");
 
-	loadFile<bfs::ConfigHead, bfs::EmptyBody>("config", "config");	
+	loadFile<bfs::ConfigHead, bfs::EmptyBody>("config", "config");
+	loadFile<bfs::CRHead, bfs::CRBody>("bullet", "cr/bullet.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("player", "cr/player.cr");
 }
 

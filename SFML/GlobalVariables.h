@@ -9,10 +9,9 @@ public:
 
 	static void update();
 	static double getMultiplier();
-
+	
 private:
 	static GlobalVariables* instance;
 	
 	double multiplier;
 };
-

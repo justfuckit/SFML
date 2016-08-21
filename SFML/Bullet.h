@@ -13,11 +13,15 @@ public:
 	~Bullet();
 
 	void draw(RenderWindow &window);
-	bool remove;
+	bool toRemove();
+	vector<IntRect>* getCollisionRects();
+	Vector2i getPosition();
 
 
 private:
+	vector<IntRect> collisionRects;
 	ExpandedSprite bulletSprite;
 	Vector2i position;
 	int moveSpeed;
+	bool remove;
 };

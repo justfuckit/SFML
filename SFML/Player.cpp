@@ -3,18 +3,20 @@
 
 
 Player::Player() :
-
-//playerFrameTimer(80000),
-position(0, 900),
-shipSprite("player", 9, 1)
+position(0, 930),
+shipSprite("player", 9, 1),
+fire("fire", 4, true, 10)
 {
 	shootPressed = false;
 	shipFrame = 0;
 	shipAnimationCounter = 0;
 	shipAnimationSpeed = 5;
-	font.loadFromFile("fonts/4114blaster.ttf");
-	text.setFont(font);
-	text.setPosition(0, 20);
+
+	fire.start();
+
+	BinaryFile<CRHead, CRBody> *cr = (BinaryFile<CRHead, CRBody>*)AssetsManager::getFile("player");
+	for (int i = 0; i < cr->getHead().size; i++)
+		collisionRects.push_back(IntRect(cr->getBody(i).left, cr->getBody(i).top, cr->getBody(i).width, cr->getBody(i).height));
 }
 
 
@@ -43,7 +45,7 @@ void Player::draw(RenderWindow &window)
 	// Bullets
 	for (int i = 0; i < (int)bullets.size(); i++)
 	{
-		if (bullets[i]->remove)
+		if (bullets[i]->toRemove())
 		{
 			delete bullets[i];
 			bullets.erase(bullets.begin() + i);
@@ -67,9 +69,8 @@ void Player::draw(RenderWindow &window)
 	shipSprite.setPosition(position);
 	window.draw(shipSprite.get(shipFrame + 4, 0));
 
-	text.setString(to_string(bullets.size()));
-	window.draw(text);
-
+	fire.setPosition(Vector2i(position.x + 31 + shipFrame , position.y + shipSprite.getUnscalledSize().y - 10));
+	window.draw(fire.getSprite());
 }
 
 
@@ -77,9 +78,9 @@ void Player::shoot()
 {
 	if (!shootPressed)
 	{
-		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 3));
-		bullets.push_back(new Bullet(position.x + 19, position.y + 75, 3));
-		bullets.push_back(new Bullet(position.x + 93, position.y + 75, 3));
+		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 5));
+		bullets.push_back(new Bullet(position.x + 19, position.y + 75, 5));
+		bullets.push_back(new Bullet(position.x + 93, position.y + 75, 5));
 		shootPressed = true;
 	}
 }
@@ -106,6 +107,29 @@ void Player::moveRight()
 		shipFrame++;
 	}
 	turnRight = true;
-	if (position.x < 1919)
+	if (position.x < 1919 - shipSprite.getSize().x)
 		position.x += 8;
+}
+
+
+vector <Bullet*>* Player::getBullets()
+{
+	return &bullets;
+}
+
+
+vector<IntRect>* Player::getCollisionRects()
+{
+	return &collisionRects;
+}
+
+
+Vector2i Player::getPosition()
+{
+	return position;
+}
+
+void Player::setPosition(int x, int y)
+{
+	position = Vector2i(x, y);
 }

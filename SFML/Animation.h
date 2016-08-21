@@ -10,7 +10,7 @@ using namespace sf;
 class Animation
 {
 public:
-	Animation(string textureName, int frames, int row, bool loop, int fps);
+	Animation(string textureName, int frames, bool loop, int fps);
 	~Animation();
 
 	bool isPlay();
@@ -24,7 +24,6 @@ private:
 	bool loop;
 	bool play;
 	int frame;
-	int row;
 	Timer timer;
 	ExpandedSprite expandedSprite;
 
