@@ -11,6 +11,7 @@ bulletSprite("bullet")
 	BinaryFile<CRHead, CRBody> *cr = (BinaryFile<CRHead, CRBody>*)AssetsManager::getFile("bullet");
 	for (int i = 0; i < cr->getHead().size; i++)
 		collisionRects.push_back(IntRect(cr->getBody(i).left, cr->getBody(i).top, cr->getBody(i).width, cr->getBody(i).height));
+
 }
 
 
@@ -31,8 +32,10 @@ void Bullet::draw(RenderWindow &window)
 }
 
 
-bool Bullet::toRemove()
+bool Bullet::toRemove(bool trueToRemoveFalseToCheck)
 { 
+	if (trueToRemoveFalseToCheck)
+		remove = true;
 	return remove;
 }
 

@@ -78,9 +78,9 @@ void Player::shoot()
 {
 	if (!shootPressed)
 	{
-		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 5));
-		bullets.push_back(new Bullet(position.x + 19, position.y + 75, 5));
-		bullets.push_back(new Bullet(position.x + 93, position.y + 75, 5));
+		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 10));
+		bullets.push_back(new Bullet(position.x + 19, position.y + 75, 10));
+		bullets.push_back(new Bullet(position.x + 93, position.y + 75, 10));
 		shootPressed = true;
 	}
 }
@@ -107,7 +107,7 @@ void Player::moveRight()
 		shipFrame++;
 	}
 	turnRight = true;
-	if (position.x < 1919 - shipSprite.getSize().x)
+	if (position.x < 1919 - shipSprite.getUnscalledSize().x)
 		position.x += 8;
 }
 
@@ -127,9 +127,4 @@ vector<IntRect>* Player::getCollisionRects()
 Vector2i Player::getPosition()
 {
 	return position;
-}
-
-void Player::setPosition(int x, int y)
-{
-	position = Vector2i(x, y);
 }

@@ -45,9 +45,17 @@ void AssetsManager::load()
 	loadTexture("bullet", "graph/bullet4.png");
 	loadTexture("background", "graph/background3.png");
 	loadTexture("fire", "graph/redfire.png");
+	loadTexture("A1", "graph/Aliens/A1.png");
+	loadTexture("A2", "graph/Aliens/A2.png");
+	loadTexture("A3", "graph/Aliens/A3.png");
+	loadTexture("A4", "graph/Aliens/A4.png");
 
 	loadFile<bfs::ConfigHead, bfs::EmptyBody>("config", "config");
 	loadFile<bfs::CRHead, bfs::CRBody>("bullet", "cr/bullet.cr");
 	loadFile<bfs::CRHead, bfs::CRBody>("player", "cr/player.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("A1", "cr/A1.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("A2", "cr/A2.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("A3", "cr/A3.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("A4", "cr/A4.cr");
 }
 

@@ -20,7 +20,6 @@ public:
 	vector <Bullet*>* getBullets();
 	vector<IntRect>* getCollisionRects();
 	Vector2i getPosition();
-	void setPosition(int x, int y);
 
 
 private:

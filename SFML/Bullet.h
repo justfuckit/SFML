@@ -13,7 +13,7 @@ public:
 	~Bullet();
 
 	void draw(RenderWindow &window);
-	bool toRemove();
+	bool toRemove( bool trueToRemoveFalseToCheck = false);
 	vector<IntRect>* getCollisionRects();
 	Vector2i getPosition();
 
