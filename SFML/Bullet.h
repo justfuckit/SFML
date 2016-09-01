@@ -2,6 +2,7 @@
 #include "Timer.h"
 #include "AssetsManager.h"
 #include "ExpandedSprite.h"
+#include "Animation.h"
 #include <SFML\Graphics.hpp>
 
 using namespace sf;
@@ -13,6 +14,7 @@ public:
 	~Bullet();
 
 	void draw(RenderWindow &window);
+	void destroy();
 	bool toRemove( bool trueToRemoveFalseToCheck = false);
 	vector<IntRect>* getCollisionRects();
 	Vector2i getPosition();
@@ -20,8 +22,13 @@ public:
 
 private:
 	vector<IntRect> collisionRects;
-	ExpandedSprite bulletSprite;
+	Animation animationBullet;
+	Animation animationDestroy;
 	Vector2i position;
+	Sound shootSound;
+	Sound destroySound;
 	int moveSpeed;
 	bool remove;
+	enum State { NORMAL, DESTROY };
+	State state;
 };

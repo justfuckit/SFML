@@ -112,7 +112,7 @@ void Game::collsisons()
 				bullets->at(j)->getPosition(), bullets->at(j)->getCollisionRects(), window))
 			{
 				enemy[i]->substractHp(1);
-				bullets->at(j)->toRemove(true);
+				bullets->at(j)->destroy();
 			}
 		}
 	}

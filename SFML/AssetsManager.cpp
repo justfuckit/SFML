@@ -39,12 +39,28 @@ void* AssetsManager::getFile(std::string const& name)
 	return (&instance->file)->at(name);
 }
 
+sf::SoundBuffer& AssetsManager::loadSoundBuffer(std::string const& name, std::string const& filename)
+{
+	auto& soundbuffer_manager = instance->sound;
+	sf::SoundBuffer& texture = soundbuffer_manager[name];
+	texture.loadFromFile(filename);
+	return texture;
+}
+
+sf::SoundBuffer& AssetsManager::getSoundBuffer(std::string const& name)
+{
+	auto& soundbuffer_manager = instance->sound;
+	return soundbuffer_manager.at(name);
+}
+
 void AssetsManager::load()
 {
 	loadTexture("player", "graph/redship.png");
-	loadTexture("bullet", "graph/bullet4.png");
+	loadTexture("bullet", "graph/fireball_small.png");
+	loadTexture("bulletdestroy", "graph/fireballdestroy_small.png");
 	loadTexture("background", "graph/background3.png");
-	loadTexture("fire", "graph/redfire.png");
+	loadTexture("fire", "graph/redfire3.png");
+	loadTexture("explosion", "graph/explosion_b.png");
 	loadTexture("A1", "graph/Aliens/A1.png");
 	loadTexture("A2", "graph/Aliens/A2.png");
 	loadTexture("A3", "graph/Aliens/A3.png");
@@ -57,5 +73,10 @@ void AssetsManager::load()
 	loadFile<bfs::CRHead, bfs::CRBody>("A2", "cr/A2.cr");
 	loadFile<bfs::CRHead, bfs::CRBody>("A3", "cr/A3.cr");
 	loadFile<bfs::CRHead, bfs::CRBody>("A4", "cr/A4.cr");
+	loadFile<bfs::CRHead, bfs::CRBody>("fireball_small", "cr/fireball_small.cr");
+
+	loadSoundBuffer("fireball_small_shoot", "sounds/laser3.ogg");
+	loadSoundBuffer("fireball_small_destroy", "sounds/boom6.wav");
+	loadSoundBuffer("enemy_destroy", "sounds/blast.wav");
 }
 

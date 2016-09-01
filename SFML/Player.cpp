@@ -5,14 +5,12 @@
 Player::Player() :
 position(0, 930),
 shipSprite("player", 9, 1),
-fire("fire", 4, true, 10)
+fire("fire", 32, true, 30)
 {
 	shootPressed = false;
 	shipFrame = 0;
 	shipAnimationCounter = 0;
 	shipAnimationSpeed = 5;
-
-	fire.start();
 
 	BinaryFile<CRHead, CRBody> *cr = (BinaryFile<CRHead, CRBody>*)AssetsManager::getFile("player");
 	for (int i = 0; i < cr->getHead().size; i++)
@@ -69,7 +67,7 @@ void Player::draw(RenderWindow &window)
 	shipSprite.setPosition(position);
 	window.draw(shipSprite.get(shipFrame + 4, 0));
 
-	fire.setPosition(Vector2i(position.x + 31 + shipFrame , position.y + shipSprite.getUnscalledSize().y - 10));
+	fire.setPosition(Vector2i(position.x + -8 + shipFrame , position.y + shipSprite.getUnscalledSize().y - 10));
 	window.draw(fire.getSprite());
 }
 
@@ -78,9 +76,12 @@ void Player::shoot()
 {
 	if (!shootPressed)
 	{
-		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 10));
-		bullets.push_back(new Bullet(position.x + 19, position.y + 75, 10));
-		bullets.push_back(new Bullet(position.x + 93, position.y + 75, 10));
+		bullets.push_back(new Bullet(position.x + 56, position.y + 30, 10));	// ||^||
+		bullets.push_back(new Bullet(position.x + 30, position.y + 52, 10));	// |^|||
+		bullets.push_back(new Bullet(position.x + 82, position.y + 52, 10));	// |||^|
+		bullets.push_back(new Bullet(position.x + 4, position.y + 75, 10));  	// ^|||| 
+		bullets.push_back(new Bullet(position.x + 108, position.y + 75, 10));	// ||||^
+		
 		shootPressed = true;
 	}
 }

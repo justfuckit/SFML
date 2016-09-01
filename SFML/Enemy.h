@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include "ExpandedSprite.h"
+#include "Animation.h"
 
 using namespace sf;
 using namespace std;
@@ -21,13 +22,18 @@ public:
 private:
 	vector<IntRect> collisionRects;
 	Vector2i position;
-	int toY;
 	ExpandedSprite sprite;
+	Animation animationDestroy;
+	Sound destroySound;
+	enum State { NORMAL, DESTROY};
+	State state;
+
+	int toY;
 	int moveDirection;
 	int moveMax;
 	bool remove;
-
 	int hp;
+
 	Font font;
 	Text t;
 };

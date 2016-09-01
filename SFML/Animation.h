@@ -18,6 +18,7 @@ public:
 	void start();
 	void stop();
 	void setPosition(Vector2i position);
+	int getFrame();
 	//void pause();
 
 private:

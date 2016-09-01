@@ -7,7 +7,7 @@ timer(static_cast<unsigned int>(1000000/fps)),
 expandedSprite(textureName, frames)
 {
 	frame = 0;
-	play = false;
+	play = loop;
 }
 
 
@@ -60,4 +60,9 @@ void Animation::stop()
 void Animation::setPosition(Vector2i position)
 {
 	expandedSprite.setPosition(position);
+}
+
+int Animation::getFrame()
+{
+	return frame;
 }
